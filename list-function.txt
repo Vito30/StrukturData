@@ -1,4 +1,0 @@
-1. Membuat UI Klasemen
-2. Mengenerate Nama Klasemen dari A - P
-3. Membuat Function Update Tabel Klasemen
-4. Memulai Pertandingan
