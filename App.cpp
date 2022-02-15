@@ -23,8 +23,8 @@ void tampilKlasemen(Klasemens Klasemen[]){
 	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].menang;
 	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].kalah;
 	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].seri;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].memasukan;
-	cout<<"| "<<setiosflags(ios::left)<<setw(2)<<Klasemen[i].kemasukan;
+	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].memasukkan;
+	cout<<"| "<<setiosflags(ios::left)<<setw(2)<<Klasemen[i].kemasukkan;
 	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].nilai;
 	cout<<"|"<<endl;
 	}
