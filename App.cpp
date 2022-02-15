@@ -4,14 +4,11 @@
 using namespace std;
 
 struct Klasemens {
+
   string nama_klub;
-  int main,
-      menang,
-      kalah,
-      seri,
-      memasukan,
-      kemasukan,
-      nilai;
+  int main, menang, kalah, seri,
+      memasukkan, kemasukkan, nilai;
+
 };
 
 void tampilKlasemen(Klasemens Klasemen[]){
@@ -43,30 +40,26 @@ void dummyKlasemen(Klasemens Klasemen[]) {
     cout << "Menang: " << Klasemen[i].menang << endl;
     cout << "Kalah: " << Klasemen[i].kalah << endl;
     cout << "Seri: " << Klasemen[i].seri << endl;
-    cout << "Memasukan: " << Klasemen[i].memasukan << endl;
-    cout << "Kemasukan: " << Klasemen[i].kemasukan << endl;
+    cout << "Memasukkan: " << Klasemen[i].memasukkan << endl;
+    cout << "Kemasukkan: " << Klasemen[i].kemasukkan << endl;
     cout << "Nilai: " << Klasemen[i].nilai << endl;
     cout << "\n";
   }
 }
 
 void initKlasemen(Klasemens Klasemen[]) {
-  Klasemen[0].nama_klub = "A"; Klasemen[1].nama_klub = "B"; Klasemen[2].nama_klub = "C";
-  Klasemen[3].nama_klub = "D"; Klasemen[4].nama_klub = "E"; Klasemen[5].nama_klub = "F";
-  Klasemen[6].nama_klub = "G"; Klasemen[7].nama_klub = "H"; Klasemen[8].nama_klub = "I";
-  Klasemen[9].nama_klub = "J"; Klasemen[10].nama_klub = "K"; Klasemen[11].nama_klub = "L";
-  Klasemen[12].nama_klub = "M"; Klasemen[13].nama_klub = "N"; Klasemen[14].nama_klub = "O";
-  Klasemen[15].nama_klub = "P";
 
   for ( int i = 0; i < 16; i++ ) {
+    Klasemen[i].nama_klub = 'A' + i;
     Klasemen[i].main = 0;
     Klasemen[i].menang = 0;
     Klasemen[i].kalah = 0;
     Klasemen[i].seri = 0;
-    Klasemen[i].memasukan = 0;
-    Klasemen[i].kemasukan = 0;
+    Klasemen[i].memasukkan = 0;
+    Klasemen[i].kemasukkan = 0;
     Klasemen[i].nilai = 0;
   }
+
 }
 
 int main() {
