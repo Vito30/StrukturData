@@ -62,12 +62,22 @@ void initKlasemen(Klasemens Klasemen[]) {
 
 }
 
+int searchIndexKlub(Klasemens Klasemen[], string nama_klub) {
+  int index_klub;
+  for ( int i = 0; i < 16: i++ ) {
+    if ( nama_klub == Klasemen[i].nama_klub ) {
+      index_klub = i;
+    }
+  }
+  return index_klub;
+}
+
 int main() {
 
   Klasemens Klasemen[16];
 
   initKlasemen(Klasemen);
-  dummyKlasemen(Klasemen);
+  //dummyKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
 
   return 0;
