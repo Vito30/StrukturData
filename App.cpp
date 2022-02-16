@@ -17,18 +17,18 @@ void tampilKlasemen(Klasemens Klasemen[]){
 	cout<<"| NO | NAMA KLUB | Ma | Me | Ka | Se | Me | Ke | Ni |"<<endl;
 	cout<<"|____|___________|____|____|____|____|____|____|____|"<<endl;
 	for (int i = 0; i < 16; i++) {
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<i+1;
-	cout<<"| "<<setiosflags(ios::left)<<setw(10)<<Klasemen[i].nama_klub;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].main;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].menang;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].kalah;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].seri;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].memasukkan;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].kemasukkan;
-	cout<<"| "<<setiosflags(ios::left)<<setw(3)<<Klasemen[i].nilai;
-	cout<<"|"<<endl;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << i+1;
+	cout<<"| " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kalah;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].seri;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].memasukkan;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kemasukkan;
+	cout<<"| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].nilai;
+	cout<<"|"  << endl;
 	}
-	cout<<"===================================================="<<endl;
+	cout<<"====================================================="<<endl;
 }
 
 void dummyKlasemen(Klasemens Klasemen[]) {
