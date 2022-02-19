@@ -20,7 +20,15 @@ void tampilKlasemen(Klasemens Klasemen[]){
 
 	for (int i = 0; i < 16; i++) {
 
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << i+1;
+          if ( i < 9 ) {
+
+	    cout << "| " << setiosflags(ios::left) << "0" << setw(2) << i + 1;
+
+          } else {
+
+            cout << "| " << setiosflags(ios::left) << setw(3) << i + 1;
+
+          }
 	  cout << "| " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
 	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
 	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
