@@ -84,7 +84,7 @@ void initKlasemen(Klasemens Klasemen[]) {
 
 }
 
-int searchIndexKlub(Klasemens Klasemen[], string nama_klub) {
+int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
   int index_klub;
 
@@ -99,6 +99,19 @@ int searchIndexKlub(Klasemens Klasemen[], string nama_klub) {
   }
 
   return index_klub;
+
+}
+
+void dummySearch(Klasemens Klasemen[]) {
+  string nama_klub;
+  int index_klub;
+
+  while (true) {
+    cout << "Masukan nama klub: ";
+    cin >> nama_klub;
+    index_klub = sequentialSearchIndexKlub(Klasemen, nama_klub);
+    cout << "Index klub [" << nama_klub << "] adalah -> " << index_klub << endl;
+  }
 }
 
 int main() {
@@ -107,6 +120,7 @@ int main() {
 
   initKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
+  dummySearch(Klasemen);
 
   return 0;
 }	
