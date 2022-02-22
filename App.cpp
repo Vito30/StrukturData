@@ -65,7 +65,7 @@ void initKlasemen(Klasemens Klasemen[]) {
 int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
   int index_klub;
-
+  
   for ( int i = 0; i < 16; i++ ) {
 
     if ( nama_klub == Klasemen[i].nama_klub ) {
@@ -77,6 +77,24 @@ int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
   }
 
   return index_klub;
+
+}
+
+void dummySearch(Klasemens Klasemen[]) {
+  
+  string nama_klub;
+  int index_klub;
+
+  while (true) {
+
+    cout << "Masukan nama klub: ";
+    cin >> nama_klub;
+    index_klub = sequentialSearchIndexKlub(Klasemen, nama_klub);
+    cout << "Index Klub [" << nama_klub << "] adalah -> " << index_klub;
+    cout << "\n";
+
+  }
+
 }
 
 void KlasemenSementara(Klasemens Klasemen[]){
@@ -161,8 +179,12 @@ int main() {
 
   initKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
+<<<<<<< HEAD
   mulaiPertandingan(Klasemen);
   tampilKlasemen(Klasemen);
+=======
+  dummySearch(Klasemen);
+>>>>>>> 730ce3846ac213493e1c3e23c4d5974321355885
 
   return 0;
 }
