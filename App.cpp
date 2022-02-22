@@ -62,7 +62,7 @@ void initKlasemen(Klasemens Klasemen[]) {
 
 }
 
-int searchIndexKlub(Klasemens Klasemen[], string nama_klub) {
+int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
   int index_klub;
 
@@ -79,11 +79,89 @@ int searchIndexKlub(Klasemens Klasemen[], string nama_klub) {
   return index_klub;
 }
 
+void KlasemenSementara(Klasemens Klasemen[]){
+	int temmp = 0;
+	string tempchar;
+	for (int i = 0 ; i < 16-1; i++){
+		for (int j = 0; j < 16 - i-1; j++){
+			if(Klasemen[j].nilai < Klasemen[j+1].nilai){
+				temmp = Klasemen[j].nilai;
+				Klasemen[j].nilai = Klasemen[j+1].nilai;
+				Klasemen[j+1].nilai = temmp;
+				
+				tempchar = Klasemen[j].nama_klub;
+				Klasemen[j].nama_klub = Klasemen[j+1].nama_klub;
+				Klasemen[j+1].nama_klub = tempchar;
+				
+				temmp = Klasemen[j].kalah;
+				Klasemen[j].kalah = Klasemen[j+1].kalah;
+				Klasemen[j+1].kalah = temmp;
+				
+				temmp = Klasemen[j].menang;
+				Klasemen[j].menang = Klasemen[j+1].menang;
+				Klasemen[j+1].menang = temmp;
+				
+				temmp = Klasemen[j].seri;
+				Klasemen[j].seri = Klasemen[j+1].seri;
+				Klasemen[j+1].seri = temmp;
+			}
+		}
+	}
+}
+
+void mulaiPertandingan(Klasemens Klasemen[]){
+	string nama_klub1,nama_klub2;
+	int gol_klub1,gol_klub2,index_klub1,index_klub2;
+	
+	cout<<"Masukan Tim Pertama : ";
+    cin>>nama_klub1;
+ 
+    cout<<"Masukan Gol : ";
+    cin>>gol_klub1;
+    index_klub1 = sequentialSearchIndexKlub(Klasemen,nama_klub1);
+ 
+    cout<<"Masukan Tim Kedua : ";
+    cin>>nama_klub2;
+ 	
+    cout<<"Masukan Gol : ";
+    cin>>gol_klub2;
+    index_klub2 = sequentialSearchIndexKlub(Klasemen,nama_klub2);
+    
+    Klasemen[index_klub1].main += 1;
+    Klasemen[index_klub2].main += 1;
+ 
+    if (gol_klub1 == gol_klub2) {
+      Klasemen[index_klub1].seri += 1;
+      Klasemen[index_klub1].nilai += 1;
+      Klasemen[index_klub2].seri += 1;
+      Klasemen[index_klub2].nilai += 1;
+    }
+    else if (gol_klub1 > gol_klub2) {
+      Klasemen[index_klub1].menang += 1;
+      Klasemen[index_klub1].nilai += 3;
+      Klasemen[index_klub2].kalah += 1;
+    }
+     else {
+      Klasemen[index_klub2].menang += 1;
+      Klasemen[index_klub2].nilai += 3;
+      Klasemen[index_klub1].kalah += 1;
+    }
+    
+    Klasemen[index_klub1].memasukkan += gol_klub1;
+    Klasemen[index_klub1].kemasukkan += gol_klub2;
+    
+    Klasemen[index_klub2].memasukkan += gol_klub2;
+    Klasemen[index_klub2].kemasukkan += gol_klub1;
+    
+}
+
 int main() {
 
   Klasemens Klasemen[16];
 
   initKlasemen(Klasemen);
+  tampilKlasemen(Klasemen);
+  mulaiPertandingan(Klasemen);
   tampilKlasemen(Klasemen);
 
   return 0;
