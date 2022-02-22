@@ -179,12 +179,9 @@ int main() {
 
   initKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
-<<<<<<< HEAD
   mulaiPertandingan(Klasemen);
   tampilKlasemen(Klasemen);
-=======
   dummySearch(Klasemen);
->>>>>>> 730ce3846ac213493e1c3e23c4d5974321355885
 
   return 0;
 }
