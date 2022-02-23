@@ -12,7 +12,6 @@ struct Klasemens {
 };
 
 void tampilKlasemen(Klasemens Klasemen[]){
-  cout << endl;
 	cout << "_____________________________________________________" << endl;
 	cout << "|    |           |    |    |    |    |    |    |    |" << endl;
 	cout << "| NO | NAMA KLUB | Ma | Me | Ka | Se | Me | Ke | Ni |" << endl;
@@ -78,8 +77,9 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
     }
     swapPointer(&Klasemen[pos], &Klasemen[i]);
   }
-  cout << endl;
   cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Nilai!";
+  cout << endl;
+  cout << endl;
   tampilKlasemen(Klasemen);
 }
 
@@ -87,7 +87,6 @@ void mulaiPertandingan(Klasemens Klasemen[]){
 	string nama_klub1, nama_klub2;
 	int gol_klub1, gol_klub2, index_klub1, index_klub2;
 	
-  cout << endl;
 	cout << "Masukan Tim Pertama : ";
   cin >> nama_klub1;
  
@@ -128,7 +127,19 @@ void mulaiPertandingan(Klasemens Klasemen[]){
   Klasemen[index_klub2].memasukkan += gol_klub2;
   Klasemen[index_klub2].kemasukkan += gol_klub1;
 
+  cout << endl;
   tampilKlasemen(Klasemen);
+}
+
+void tampilkanSistemPoint() {
+  cout << "===================================================================" << endl;
+  cout << "|                                                                 |" << endl;
+  cout << "|                     SISTEM PENILAIAN POINT!                     |" << endl;
+  cout << "|                                                                 |" << endl;
+  cout << "|      1. Jika salah satu team menang, point nilai +3             |" << endl;
+  cout << "|      2. Jika kedua team seri, point nilai +1                    |" << endl;
+  cout << "|                                                                 |" << endl;
+  cout << "===================================================================" << endl;
 }
 
 void mainMenu() {
@@ -136,6 +147,7 @@ void mainMenu() {
   cout << "[1] Update Tabel Data Klasemen" << endl;
   cout << "[2] Mulai Pertandingan Klub" << endl;
   cout << "[3] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
+  cout << "[4] Tampilkan Sistem Penilaian Point" << endl;
 }
 
 int main() {
@@ -151,6 +163,7 @@ int main() {
     cout << endl;
     cout << "Pilih Menu : ";
     cin >> pilih_menu;
+    cout << endl;
 
     switch (pilih_menu) {
       case 1:
@@ -161,6 +174,9 @@ int main() {
         break;
       case 3:
         urutBerdasarkanPointNilai(Klasemen);
+        break;
+      case 4:
+        tampilkanSistemPoint();
         break;
     }
   }
