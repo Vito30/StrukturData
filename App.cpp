@@ -36,20 +36,20 @@ void colorName() {
 void tampilKlasemen(Klasemens Klasemen[]){
 
 	cout << "┌───────────────────────────────────────────────────┐" << endl;
-cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
+  cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
 	cout << "└───────────────────────────────────────────────────┘" << endl;
 
 	for (int i = 0; i < 16; i++) {
 
-          if ( i < 9 ) {
+    if ( i < 9 ) {
 
 	    cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << "0" << setw(2) << i + 1;
 
-          } else {
+    } else {
 
-            cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << i + 1;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << i + 1;
 
-          }
+    }
 
 	  cout << COLOR_RESET << "│ " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
 	  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].main;
@@ -63,7 +63,7 @@ cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni �
 
 	}
 
-        cout << "└───────────────────────────────────────────────────┘" << endl;
+  cout << "└───────────────────────────────────────────────────┘" << endl;
 
 }
 
@@ -102,16 +102,79 @@ int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
 }
 
-void dummySearch(Klasemens Klasemen[]) {
-  string nama_klub;
-  int index_klub;
+void mulaiPertandingan(Klasemens Klasemen[]) {
+  string nama_klub1, nama_klub2;
+  int gol_klub1, gol_klub2, index_klub1, index_klub2;
 
-  while (true) {
-    cout << "Masukan nama klub: ";
-    cin >> nama_klub;
-    index_klub = sequentialSearchIndexKlub(Klasemen, nama_klub);
-    cout << "Index klub [" << nama_klub << "] adalah -> " << index_klub << endl;
+  cout << endl;
+
+  cout << "Masukan Nama Klub Pertama : ";
+  cin >> nama_klub1;
+  cout << "Masukan Gol Klub Pertama : ";
+  cin >> gol_klub1;
+  index_klub1 = sequentialSearchIndexKlub(Klasemen, nama_klub1);
+
+  cout << "Masukan Nama Klub Kedua : ";
+  cin >> nama_klub2;
+  cout << "Masukan Gol Klub Kedua : ";
+  cin >> gol_klub2;
+  index_klub2 = sequentialSearchIndexKlub(Klasemen, nama_klub2);
+
+  Klasemen[index_klub1].main += 1;
+  Klasemen[index_klub2].main += 1;
+
+  // Rule atau Peraturan Pertandingan:
+
+  if (gol_klub1 == gol_klub2) {
+
+    Klasemen[index_klub1].seri += 1;
+    Klasemen[index_klub1].nilai += 1;
+
+    Klasemen[index_klub2].seri += 1;
+    Klasemen[index_klub2].nilai += 1;
+
+  } else if (gol_klub1 > gol_klub2) {
+
+    Klasemen[index_klub1].menang += 1;
+    Klasemen[index_klub1].nilai += 3;
+
+    Klasemen[index_klub2].kalah += 1;
+
+  } else if (gol_klub2 > gol_klub1) {
+
+    Klasemen[index_klub2].menang += 1;
+    Klasemen[index_klub2].nilai += 3;
+
+    Klasemen[index_klub1].kalah += 1;
+
   }
+
+  Klasemen[index_klub1].memasukkan += gol_klub1;
+  Klasemen[index_klub1].kemasukkan += gol_klub2;
+
+  Klasemen[index_klub2].memasukkan += gol_klub2;
+  Klasemen[index_klub2].kemasukkan += gol_klub1;
+}
+
+void swapPointer(Klasemens *x_position, Klasemens *y_position) {
+  Klasemen temporary_pointer = *x_position;
+  *x_position = *y_position;
+  *y_position = temporary_pointer;
+}
+
+void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
+  for ( int i = 0; i < 16 - 1; i++ ) {
+    int pos = i;
+    for ( int j = i + 1; j < 16; j++ ) {
+      if ( Klasemen[j].nilai > Klasemen[pos].nilai ) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << endl;
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berasarkan Point Nilai!" << endl;
+  tampilKlasemen(Klasemen);
 }
 
 int main() {
@@ -120,7 +183,7 @@ int main() {
 
   initKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
-  dummySearch(Klasemen);
+
 
   return 0;
 }	
