@@ -72,14 +72,14 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
   {
     int pos = i;
     for (int j = i + 1; j < 16; j++) {
-      if (Klasemen[j].nilai > Klasemen[pos].menang) {
+      if (Klasemen[j].nilai > Klasemen[pos].nilai) {
         pos = j;
       }
     }
     swapPointer(&Klasemen[pos], &Klasemen[i]);
   }
   cout << endl;
-  cout << "Pemberitahuan: Data Berhasil di urutkan!" << endl;
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Nilai!";
   tampilKlasemen(Klasemen);
 }
 
