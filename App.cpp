@@ -35,6 +35,8 @@ void colorName() {
 
 void tampilKlasemen(Klasemens Klasemen[]){
 
+  cout << endl;
+
 	cout << "┌───────────────────────────────────────────────────┐" << endl;
   cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
 	cout << "└───────────────────────────────────────────────────┘" << endl;
@@ -106,17 +108,26 @@ void mulaiPertandingan(Klasemens Klasemen[]) {
   string nama_klub1, nama_klub2;
   int gol_klub1, gol_klub2, index_klub1, index_klub2;
 
+  cout << "┌───────────────────────┐" << endl;
+  cout << "│ " << COLOR_RED << "Input-an Klub Pertama" << COLOR_RESET << " │" << endl;
+  cout << "└───────────────────────┘" << endl;
   cout << endl;
 
-  cout << "Masukan Nama Klub Pertama : ";
+  cout << COLOR_RED << "Masukan Nama Klub" << COLOR_RESET << " > ";
   cin >> nama_klub1;
-  cout << "Masukan Gol Klub Pertama : ";
+  cout << COLOR_RED << "Masukan Gol " << COLOR_RESET << " > ";
   cin >> gol_klub1;
   index_klub1 = sequentialSearchIndexKlub(Klasemen, nama_klub1);
 
-  cout << "Masukan Nama Klub Kedua : ";
+  cout << endl;
+  cout << "┌─────────────────────┐" << endl;
+  cout << "│ " << COLOR_CYAN << "Input-an Klub Kedua" << COLOR_RESET << " │" << endl;
+  cout << "└─────────────────────┘" << endl;
+  cout << endl;
+
+  cout << COLOR_CYAN << "Masukan Nama Klub" << COLOR_RESET << " > ";
   cin >> nama_klub2;
-  cout << "Masukan Gol Klub Kedua : ";
+  cout << COLOR_CYAN << "Masukan Gol " << COLOR_RESET << " > ";
   cin >> gol_klub2;
   index_klub2 = sequentialSearchIndexKlub(Klasemen, nama_klub2);
 
@@ -154,36 +165,83 @@ void mulaiPertandingan(Klasemens Klasemen[]) {
 
   Klasemen[index_klub2].memasukkan += gol_klub2;
   Klasemen[index_klub2].kemasukkan += gol_klub1;
+
+  tampilKlasemen(Klasemen);
 }
 
 void swapPointer(Klasemens *x_position, Klasemens *y_position) {
-  Klasemen temporary_pointer = *x_position;
+  Klasemens temporary_pointer = *x_position;
   *x_position = *y_position;
   *y_position = temporary_pointer;
 }
 
 void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
+
   for ( int i = 0; i < 16 - 1; i++ ) {
+
     int pos = i;
+
     for ( int j = i + 1; j < 16; j++ ) {
+
       if ( Klasemen[j].nilai > Klasemen[pos].nilai ) {
+
         pos = j;
+
       }
+
     }
+
     swapPointer(&Klasemen[pos], &Klasemen[i]);
+
   }
-  cout << endl;
-  cout << "Pemberitahuan: Data Berhasil di Urutkan berasarkan Point Nilai!" << endl;
+
+  cout << "┌─────────────────────────────────────────────────────────────────┐" << endl;
+  cout << "│ " << COLOR_YELLOW << "Pemberitahuan: " << COLOR_GREEN << "Data Berhasil di Urutkan berasarkan Point Nilai!" << COLOR_RESET << " │" << endl;
+  cout << "└─────────────────────────────────────────────────────────────────┘" << endl;
   tampilKlasemen(Klasemen);
+
+}
+
+void mainMenu() {
+
+  cout << endl;
+  cout << "[" << COLOR_YELLOW << "1" << COLOR_RESET "] Update Tabel Data Klasemen" << endl;
+  cout << "[" << COLOR_YELLOW << "2" << COLOR_RESET "] Mulai Pertandingan Klub" << endl;
+  cout << "[" << COLOR_YELLOW << "3" << COLOR_RESET "] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
+
 }
 
 int main() {
 
   Klasemens Klasemen[16];
+  int pilih_menu;
 
   initKlasemen(Klasemen);
   tampilKlasemen(Klasemen);
 
+  while ( true ) {
+
+    mainMenu();
+    cout << endl;
+    cout << COLOR_GREEN << "Pilih Menu" << COLOR_RESET << " > ";
+    cin >> pilih_menu;
+    cout << endl;
+
+    switch ( pilih_menu ) {
+
+      case 1:
+        tampilKlasemen(Klasemen);
+        break;
+      case 2:
+        mulaiPertandingan(Klasemen);
+        break;
+      case 3:
+        urutBerdasarkanPointNilai(Klasemen);
+        break;
+
+    }
+
+  }
 
   return 0;
 }	
