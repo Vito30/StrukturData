@@ -148,6 +148,7 @@ void mainMenu() {
   cout << "[2] Mulai Pertandingan Klub" << endl;
   cout << "[3] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
   cout << "[4] Tampilkan Sistem Penilaian Point" << endl;
+  cout << "[5] Keluar Dari Program" << endl;
 }
 
 int main() {
@@ -178,6 +179,10 @@ int main() {
       case 4:
         tampilkanSistemPoint();
         break;
+      case 5 :
+    	cout << "Terimakasih...";
+    	return 0;
+    	break;
     }
   }
 
