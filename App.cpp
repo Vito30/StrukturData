@@ -202,13 +202,24 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
 
 }
 
+void tampilkanSistemPoint() {
+  cout << "┌─────────────────────────────────────────────────────────────────┐" << endl;
+  cout << "│                                                                 │" << endl;
+  cout << "│                     SISTEM PENILAIAN POINT!                     │" << endl;
+  cout << "│                                                                 │" << endl;
+  cout << "│      1. Jika salah satu team menang, point nilai +3             │" << endl;
+  cout << "│      2. Jika kedua team seri, point nilai +1                    │" << endl;
+  cout << "│                                                                 │" << endl;
+  cout << "└─────────────────────────────────────────────────────────────────┘" << endl;
+}
+
 void mainMenu() {
 
   cout << endl;
   cout << "[" << COLOR_YELLOW << "1" << COLOR_RESET "] Update Tabel Data Klasemen" << endl;
   cout << "[" << COLOR_YELLOW << "2" << COLOR_RESET "] Mulai Pertandingan Klub" << endl;
   cout << "[" << COLOR_YELLOW << "3" << COLOR_RESET "] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
-
+  cout << "[" << COLOR_YELLOW << "4" << COLOR_RESET "] Lihat Sistem Penilaian Point" << endl;
 }
 
 int main() {
@@ -237,6 +248,9 @@ int main() {
         break;
       case 3:
         urutBerdasarkanPointNilai(Klasemen);
+        break;
+      case 4:
+        tampilkanSistemPoint();
         break;
 
     }
