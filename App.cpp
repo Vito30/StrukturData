@@ -78,6 +78,8 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
     }
     swapPointer(&Klasemen[pos], &Klasemen[i]);
   }
+  cout << endl;
+  cout << "Pemberitahuan: Data Berhasil di urutkan!" << endl;
   tampilKlasemen(Klasemen);
 }
 
@@ -85,6 +87,7 @@ void mulaiPertandingan(Klasemens Klasemen[]){
 	string nama_klub1, nama_klub2;
 	int gol_klub1, gol_klub2, index_klub1, index_klub2;
 	
+  cout << endl;
 	cout << "Masukan Tim Pertama : ";
   cin >> nama_klub1;
  
