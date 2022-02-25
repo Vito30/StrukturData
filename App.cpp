@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <iomanip>
 
 using namespace std;
@@ -10,6 +11,15 @@ struct Klasemens {
       memasukkan, kemasukkan, nilai;
 
 };
+
+string nama_klub[] = {
+  "Man City", "Liverpool", "Chealse", "Man United", "Arsenal",
+  "West Ham", "Wolves", "Tottenham", "Brighton", "Southampton",
+  "Crystal Palace", "Leicester City", "Aston Villa", "Brentford",
+  "Leeds United", "Everton"
+};
+
+int index_klub1 = -1, index_klub2 = -1;
 
 void colorName() {
 
@@ -33,39 +43,75 @@ void colorName() {
 
 }
 
-void tampilKlasemen(Klasemens Klasemen[]){
+void tampilKlasemen(Klasemens Klasemen[], string color_mode){
 
   cout << endl;
 
-  cout << "┌───────────────────────────────────────────────────┐" << endl;
-  cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
-  cout << "└───────────────────────────────────────────────────┘" << endl;
+  cout << "┌─────────────────────────────────────────────────────────┐" << endl;
+  cout << "│ No │    Nama Klub    │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
+  cout << "└─────────────────────────────────────────────────────────┘" << endl;
 
   for (int i = 0; i < 16; i++) {
 
-    if ( i < 9 ) {
+    if ( color_mode == "color_on" && index_klub1 == i || index_klub2 == i ) {
+      if ( i < 9 ) {
 
-      cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << "0" << setw(2) << i + 1;
+        cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << left << "0" << setw(2) << i + 1;
 
+      } else {
+
+        cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << left << setw(3) << i + 1;
+
+      }
+
+      cout << COLOR_RESET << "│ " << left << setw(16) << Klasemen[i].nama_klub;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << left << setw(3) << Klasemen[i].main;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << left << setw(3) << Klasemen[i].menang;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDRED << left << setw(3) << Klasemen[i].kalah;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << left << setw(3) << Klasemen[i].seri;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << left << setw(3) << Klasemen[i].memasukkan;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDRED << left << setw(3) << Klasemen[i].kemasukkan;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << left << setw(3) << Klasemen[i].nilai;
+      cout << COLOR_RESET << "│ " << endl;
     } else {
+      if ( i < 9 ) {
+        cout << "│ " << left << "0" << setw(2) << i + 1;
+      } else {
+        cout << "│ " << left << setw(3) << i + 1;
+      }
 
-      cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << i + 1;
-
+      cout << "│ " << left << setw(16) << Klasemen[i].nama_klub;
+      cout << "│ " << left << setw(3) << Klasemen[i].main;
+      cout << "│ " << left << setw(3) << Klasemen[i].menang;
+      cout << "│ " << left << setw(3) << Klasemen[i].kalah;
+      cout << "│ " << left << setw(3) << Klasemen[i].seri;
+      cout << "│ " << left << setw(3) << Klasemen[i].memasukkan;
+      cout << "│ " << left << setw(3) << Klasemen[i].kemasukkan;
+      cout << "│ " << left << setw(3) << Klasemen[i].nilai;
+      cout << "│ " << endl;      
     }
 
-  cout << COLOR_RESET << "│ " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].main;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].menang;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kalah;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << Klasemen[i].seri;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].memasukkan;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kemasukkan;
-  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].nilai;
-  cout << COLOR_RESET << "│ "  << endl;
+    // if ( color_mode == "color_off" ) {
+    //   if ( i < 9 ) {
+    //     cout << "│ " << left << "0" << setw(2) << i + 1;
+    //   } else {
+    //     cout << "│ " << left << setw(3) << i + 1;
+    //   }
+
+    //   cout << "│ " << left << setw(16) << Klasemen[i].nama_klub;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].main;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].menang;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].kalah;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].seri;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].memasukkan;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].kemasukkan;
+    //   cout << "│ " << left << setw(3) << Klasemen[i].nilai;
+    //   cout << "│ " << endl;
+    // }
 
   }
 
-  cout << "└───────────────────────────────────────────────────┘" << endl;
+  cout << "└─────────────────────────────────────────────────────────┘" << endl;
 
 }
 
@@ -73,7 +119,7 @@ void initKlasemen(Klasemens Klasemen[]) {
 
   for ( int i = 0; i < 16; i++ ) {
 
-    Klasemen[i].nama_klub = 'A' + i;
+    Klasemen[i].nama_klub = nama_klub[i];
     Klasemen[i].main = 0;
     Klasemen[i].menang = 0;
     Klasemen[i].kalah = 0;
@@ -88,7 +134,7 @@ void initKlasemen(Klasemens Klasemen[]) {
 
 int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
-  int index_klub;
+  int index_klub = -1;
 
   for ( int i = 0; i < 16; i++ ) {
 
@@ -100,73 +146,102 @@ int sequentialSearchIndexKlub(Klasemens Klasemen[], string nama_klub) {
 
   }
 
+  if ( index_klub == -1 ) {
+    cout << COLOR_YELLOW << "  Peringantan: nama klub tidak ditemukan" << COLOR_RESET << endl;
+  }
+
   return index_klub;
 
 }
 
 void mulaiPertandingan(Klasemens Klasemen[]) {
   string nama_klub1, nama_klub2;
-  int gol_klub1, gol_klub2, index_klub1, index_klub2;
+  char confirm;
+  int gol_klub1, gol_klub2;
 
-  cout << "┌───────────────────────┐" << endl;
-  cout << "│ " << COLOR_RED << "Input-an Klub Pertama" << COLOR_RESET << " │" << endl;
-  cout << "└───────────────────────┘" << endl;
+  cout << "┌────────────────────┐" << endl;
+  cout << "│ " << COLOR_RED << "Input-an Klub Home" << COLOR_RESET << " │" << endl;
+  cout << "└────────────────────┘" << endl;
   cout << endl;
 
   cout << COLOR_RED << "Masukan Nama Klub" << COLOR_RESET << " > ";
-  cin >> nama_klub1;
-  cout << COLOR_RED << "Masukan Gol " << COLOR_RESET << " > ";
+  cin.ignore();
+  getline(cin, nama_klub1);
+  cout << COLOR_RED << "Masukan Gol      " << COLOR_RESET << " > ";
   cin >> gol_klub1;
   index_klub1 = sequentialSearchIndexKlub(Klasemen, nama_klub1);
 
   cout << endl;
-  cout << "┌─────────────────────┐" << endl;
-  cout << "│ " << COLOR_CYAN << "Input-an Klub Kedua" << COLOR_RESET << " │" << endl;
-  cout << "└─────────────────────┘" << endl;
+  cout << "┌────────────────────┐" << endl;
+  cout << "│ " << COLOR_CYAN << "Input-an Klub Away" << COLOR_RESET << " │" << endl;
+  cout << "└────────────────────┘" << endl;
   cout << endl;
 
   cout << COLOR_CYAN << "Masukan Nama Klub" << COLOR_RESET << " > ";
-  cin >> nama_klub2;
-  cout << COLOR_CYAN << "Masukan Gol " << COLOR_RESET << " > ";
+  cin.ignore();
+  getline(cin, nama_klub2);
+  cout << COLOR_CYAN << "Masukan Gol      " << COLOR_RESET << " > ";
   cin >> gol_klub2;
   index_klub2 = sequentialSearchIndexKlub(Klasemen, nama_klub2);
 
-  Klasemen[index_klub1].main += 1;
-  Klasemen[index_klub2].main += 1;
+  cout << endl;
+  cout << "┌─────────────────────────────────────────────────┐" << endl;
+  cout << "│     " << COLOR_RED << "Nama Klub Home" << COLOR_RESET "    V S     " << COLOR_CYAN << "Nama Klub Away" << COLOR_RESET "    │" << endl;
+  cout << "└─────────────────────────────────────────────────┘" << endl;
+  cout << "│     " << COLOR_RED << setw(15) << nama_klub1 << COLOR_RESET << "   " << gol_klub1 << "-" << gol_klub2 << "     " << COLOR_CYAN << setw(15) << nama_klub2 << COLOR_RESET << "   │" << endl;
+  cout << "└─────────────────────────────────────────────────┘" << endl;
 
-  // Rule atau Peraturan Pertandingan:
+  cout << endl;
+  cout << "Apakah sudah benar? [y/n] > ";
+  cin >> confirm;
 
-  if (gol_klub1 == gol_klub2) {
+  switch (confirm) {
 
-    Klasemen[index_klub1].seri += 1;
-    Klasemen[index_klub1].nilai += 1;
+    case 'y':
+    case 'Y':
 
-    Klasemen[index_klub2].seri += 1;
-    Klasemen[index_klub2].nilai += 1;
+      Klasemen[index_klub1].main += 1;
+      Klasemen[index_klub2].main += 1;
 
-  } else if (gol_klub1 > gol_klub2) {
+      // Rule atau Peraturan Pertandingan:
 
-    Klasemen[index_klub1].menang += 1;
-    Klasemen[index_klub1].nilai += 3;
+      if (gol_klub1 == gol_klub2) {
 
-    Klasemen[index_klub2].kalah += 1;
+        Klasemen[index_klub1].seri += 1;
+        Klasemen[index_klub1].nilai += 1;
 
-  } else if (gol_klub2 > gol_klub1) {
+        Klasemen[index_klub2].seri += 1;
+        Klasemen[index_klub2].nilai += 1;
 
-    Klasemen[index_klub2].menang += 1;
-    Klasemen[index_klub2].nilai += 3;
+      } else if (gol_klub1 > gol_klub2) {
 
-    Klasemen[index_klub1].kalah += 1;
+        Klasemen[index_klub1].menang += 1;
+        Klasemen[index_klub1].nilai += 3;
 
+        Klasemen[index_klub2].kalah += 1;
+
+      } else if (gol_klub2 > gol_klub1) {
+
+        Klasemen[index_klub2].menang += 1;
+        Klasemen[index_klub2].nilai += 3;
+
+        Klasemen[index_klub1].kalah += 1;
+
+      }
+
+      Klasemen[index_klub1].memasukkan += gol_klub1;
+      Klasemen[index_klub1].kemasukkan += gol_klub2;
+
+      Klasemen[index_klub2].memasukkan += gol_klub2;
+      Klasemen[index_klub2].kemasukkan += gol_klub1;
+
+      tampilKlasemen(Klasemen, "color_on");
+      break;
+
+    case 'n':
+    case 'N':
+      break;
   }
-
-  Klasemen[index_klub1].memasukkan += gol_klub1;
-  Klasemen[index_klub1].kemasukkan += gol_klub2;
-
-  Klasemen[index_klub2].memasukkan += gol_klub2;
-  Klasemen[index_klub2].kemasukkan += gol_klub1;
-
-  tampilKlasemen(Klasemen);
 }
 
 void swapPointer(Klasemens *x_position, Klasemens *y_position) {
@@ -198,7 +273,7 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
   cout << "┌─────────────────────────────────────────────────────────────────┐" << endl;
   cout << "│ " << COLOR_YELLOW << "Pemberitahuan: " << COLOR_GREEN << "Data Berhasil di Urutkan berasarkan Point Nilai!" << COLOR_RESET << " │" << endl;
   cout << "└─────────────────────────────────────────────────────────────────┘" << endl;
-  tampilKlasemen(Klasemen);
+  tampilKlasemen(Klasemen, "color_on");
 
 }
 
@@ -228,7 +303,7 @@ int main() {
   int pilih_menu;
 
   initKlasemen(Klasemen);
-  tampilKlasemen(Klasemen);
+  tampilKlasemen(Klasemen, "color_off");
 
   while ( true ) {
 
@@ -241,7 +316,7 @@ int main() {
     switch ( pilih_menu ) {
 
       case 1:
-        tampilKlasemen(Klasemen);
+        tampilKlasemen(Klasemen, "color_off");
         break;
       case 2:
         mulaiPertandingan(Klasemen);
