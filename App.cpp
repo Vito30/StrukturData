@@ -37,15 +37,15 @@ void tampilKlasemen(Klasemens Klasemen[]){
 
   cout << endl;
 
-	cout << "┌───────────────────────────────────────────────────┐" << endl;
+  cout << "┌───────────────────────────────────────────────────┐" << endl;
   cout << "│ No │ Nama Klub │ Ma │ Me │ Ka │ Se │ Me │ Ke │ Ni │" << endl;
-	cout << "└───────────────────────────────────────────────────┘" << endl;
+  cout << "└───────────────────────────────────────────────────┘" << endl;
 
-	for (int i = 0; i < 16; i++) {
+  for (int i = 0; i < 16; i++) {
 
     if ( i < 9 ) {
 
-	    cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << "0" << setw(2) << i + 1;
+      cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << "0" << setw(2) << i + 1;
 
     } else {
 
@@ -53,17 +53,17 @@ void tampilKlasemen(Klasemens Klasemen[]){
 
     }
 
-	  cout << COLOR_RESET << "│ " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].main;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].menang;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kalah;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << Klasemen[i].seri;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].memasukkan;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kemasukkan;
-	  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].nilai;
-	  cout << COLOR_RESET << "│ "  << endl;
+  cout << COLOR_RESET << "│ " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].main;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].menang;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kalah;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDYELLOW << setiosflags(ios::left) << setw(3) << Klasemen[i].seri;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDBLUE << setiosflags(ios::left) << setw(3) << Klasemen[i].memasukkan;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDRED << setiosflags(ios::left) << setw(3) << Klasemen[i].kemasukkan;
+  cout << COLOR_RESET << "│ " << COLOR_BOLDCYAN << setiosflags(ios::left) << setw(3) << Klasemen[i].nilai;
+  cout << COLOR_RESET << "│ "  << endl;
 
-	}
+  }
 
   cout << "└───────────────────────────────────────────────────┘" << endl;
 
