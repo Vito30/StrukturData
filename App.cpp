@@ -91,6 +91,23 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
   tampilKlasemen(Klasemen);
 }
 
+void urutBerdasarkanPointMain(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].main > Klasemen[pos].main) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Main!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
 void mulaiPertandingan(Klasemens Klasemen[]){
   string nama_klub1, nama_klub2;
   int gol_klub1, gol_klub2, index_klub1, index_klub2;
@@ -154,10 +171,11 @@ void tampilkanSistemPoint() {
 
 void mainMenu() {
   cout << endl;
+  cout << "[0] Tampilkan Sistem Penilaian Point" << endl;
   cout << "[1] Update Tabel Data Klasemen" << endl;
   cout << "[2] Mulai Pertandingan Klub" << endl;
   cout << "[3] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
-  cout << "[4] Tampilkan Sistem Penilaian Point" << endl;
+  cout << "[4] Urutkan Tabel Data Klasemen Berdasarkan Point Main" << endl;
 }
 
 int main() {
@@ -176,6 +194,9 @@ int main() {
     cout << endl;
 
     switch (pilih_menu) {
+      case 0:
+        tampilkanSistemPoint();
+        break;
       case 1:
         tampilKlasemen(Klasemen);
         break;
@@ -186,7 +207,7 @@ int main() {
         urutBerdasarkanPointNilai(Klasemen);
         break;
       case 4:
-        tampilkanSistemPoint();
+        urutBerdasarkanPointMain(Klasemen);
         break;
     }
   }
