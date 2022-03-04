@@ -314,10 +314,6 @@ int main() {
       case 9:
         urutBerdasarkanPointKemasukkan(Klasemen);
         break;
-      case 5 :
-    	cout << "Terimakasih...";
-    	return 0;
-    	break;
     }
   }
 
