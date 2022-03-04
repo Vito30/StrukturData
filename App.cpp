@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -11,35 +12,42 @@ struct Klasemens {
 
 };
 
-void tampilKlasemen(Klasemens Klasemen[]){
-	cout << "_____________________________________________________" << endl;
-	cout << "|    |           |    |    |    |    |    |    |    |" << endl;
-	cout << "| NO | NAMA KLUB | Ma | Me | Ka | Se | Me | Ke | Ni |" << endl;
-	cout << "|____|___________|____|____|____|____|____|____|____|" << endl;
+string nama_klub[] = {
+  "Man City", "Liverpool", "Chealse", "Man United", "Arsenal",
+  "West Ham", "Wolves", "Tottenham", "Brighton", "Southampton",
+  "Crystal Palace", "Leicester City", "Aston Villa", "Brentford",
+  "Leeds United", "Everton"
+};
 
-	for (int i = 0; i < 16; i++) {
+void tampilKlasemen(Klasemens Klasemen[]){
+  cout << "__________________________________________________________" << endl;
+  cout << "|    |                |    |    |    |    |    |    |    |" << endl;
+  cout << "| NO |    NAMA KLUB   | Ma | Me | Ka | Se | Me | Ke | Ni |" << endl;
+  cout << "|____|________________|____|____|____|____|____|____|____|" << endl;
+
+  for (int i = 0; i < 16; i++) {
     if ( i < 9 ) {
-	    cout << "| " << setiosflags(ios::left) << "0" << setw(2) << i + 1;
+      cout << "| " << setiosflags(ios::left) << "0" << setw(2) << i + 1;
     } else {
       cout << "| " << setiosflags(ios::left) << setw(3) << i + 1;
     }
 
-	  cout << "| " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kalah;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].seri;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].memasukkan;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kemasukkan;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].nilai;
-	  cout << "|"  << endl;
-	}
-	cout << "=====================================================" << endl;
+   cout << "| " << setiosflags(ios::left) << setw(15) << Klasemen[i].nama_klub;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kalah;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].seri;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].memasukkan;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kemasukkan;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].nilai;
+   cout << "|"  << endl;
+ } 
+ cout << "==========================================================" << endl;
 }
 
 void initKlasemen(Klasemens Klasemen[]) {
   for ( int i = 0; i < 16; i++ ) {
-    Klasemen[i].nama_klub = 'A' + i;
+    Klasemen[i].nama_klub = nama_klub[i];
     Klasemen[i].main = 0;
     Klasemen[i].menang = 0;
     Klasemen[i].kalah = 0;
@@ -83,19 +91,123 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
   tampilKlasemen(Klasemen);
 }
 
+void urutBerdasarkanPointMain(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].main > Klasemen[pos].main) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Main!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
+void urutBerdasarkanPointMenang(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].menang > Klasemen[pos].menang) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Menang!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
+void urutBerdasarkanPointKalah(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].kalah > Klasemen[pos].kalah) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Kalah!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
+void urutBerdasarkanPointSeri(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].seri > Klasemen[pos].seri) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Seri!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
+void urutBerdasarkanPointMemasukkan(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].memasukkan > Klasemen[pos].memasukkan) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Memasukkan!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
+void urutBerdasarkanPointKemasukkan(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].kemasukkan > Klasemen[pos].kemasukkan) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Kemasukkan!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
 void mulaiPertandingan(Klasemens Klasemen[]){
-	string nama_klub1, nama_klub2;
-	int gol_klub1, gol_klub2, index_klub1, index_klub2;
+  string nama_klub1, nama_klub2;
+  int gol_klub1, gol_klub2, index_klub1, index_klub2;
 	
-	cout << "Masukan Tim Pertama : ";
-  cin >> nama_klub1;
+  cout << "Masukan Tim Pertama : ";
+  cin.ignore();
+  getline(cin, nama_klub1);
  
   cout << "Masukan Gol : ";
   cin >> gol_klub1;
   index_klub1 = sequentialSearchIndexKlub(Klasemen,nama_klub1);
  
   cout << "Masukan Tim Kedua : ";
-  cin >> nama_klub2;
+  cin.ignore();
+  getline(cin, nama_klub2);
  	
   cout << "Masukan Gol : ";
   cin >> gol_klub2;
@@ -144,11 +256,16 @@ void tampilkanSistemPoint() {
 
 void mainMenu() {
   cout << endl;
+  cout << "[0] Tampilkan Sistem Penilaian Point" << endl;
   cout << "[1] Update Tabel Data Klasemen" << endl;
   cout << "[2] Mulai Pertandingan Klub" << endl;
   cout << "[3] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
-  cout << "[4] Tampilkan Sistem Penilaian Point" << endl;
-  cout << "[5] Keluar Dari Program" << endl;
+  cout << "[4] Urutkan Tabel Data Klasemen Berdasarkan Point Main" << endl;
+  cout << "[5] Urutkan Tabel Data Klasemen Berdasarkan Point Menang" << endl;
+  cout << "[6] Urutkan Tabel Data Klasemen Berdasarkan Point Kalah" << endl;
+  cout << "[7] Urutkan Tabel Data Klasemen Berdasarkan Point Seri" << endl;
+  cout << "[8] Urutkan Tabel Data Klasemen Berdasarkan Point Memasukkan" << endl;
+  cout << "[9] Urutkan Tabel Data Klasemen Berdasarkan Point Kemasukkan" << endl;
 }
 
 int main() {
@@ -167,6 +284,9 @@ int main() {
     cout << endl;
 
     switch (pilih_menu) {
+      case 0:
+        tampilkanSistemPoint();
+        break;
       case 1:
         tampilKlasemen(Klasemen);
         break;
@@ -177,7 +297,22 @@ int main() {
         urutBerdasarkanPointNilai(Klasemen);
         break;
       case 4:
-        tampilkanSistemPoint();
+        urutBerdasarkanPointMain(Klasemen);
+        break;
+      case 5:
+        urutBerdasarkanPointMenang(Klasemen);
+        break;
+      case 6:
+        urutBerdasarkanPointKalah(Klasemen);
+        break;
+      case 7:
+        urutBerdasarkanPointSeri(Klasemen);
+        break;
+      case 8:
+        urutBerdasarkanPointMemasukkan(Klasemen);
+        break;
+      case 9:
+        urutBerdasarkanPointKemasukkan(Klasemen);
         break;
       case 5 :
     	cout << "Terimakasih...";
