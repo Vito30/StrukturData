@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -95,14 +96,16 @@ void mulaiPertandingan(Klasemens Klasemen[]){
   int gol_klub1, gol_klub2, index_klub1, index_klub2;
 	
   cout << "Masukan Tim Pertama : ";
-  cin >> nama_klub1;
+  cin.ignore();
+  getline(cin, nama_klub1);
  
   cout << "Masukan Gol : ";
   cin >> gol_klub1;
   index_klub1 = sequentialSearchIndexKlub(Klasemen,nama_klub1);
  
   cout << "Masukan Tim Kedua : ";
-  cin >> nama_klub2;
+  cin.ignore();
+  getline(cin, nama_klub2);
  	
   cout << "Masukan Gol : ";
   cin >> gol_klub2;
