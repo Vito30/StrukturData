@@ -11,35 +11,42 @@ struct Klasemens {
 
 };
 
-void tampilKlasemen(Klasemens Klasemen[]){
-	cout << "_____________________________________________________" << endl;
-	cout << "|    |           |    |    |    |    |    |    |    |" << endl;
-	cout << "| NO | NAMA KLUB | Ma | Me | Ka | Se | Me | Ke | Ni |" << endl;
-	cout << "|____|___________|____|____|____|____|____|____|____|" << endl;
+string nama_klub[] = {
+  "Man City", "Liverpool", "Chealse", "Man United", "Arsenal",
+  "West Ham", "Wolves", "Tottenham", "Brighton", "Southampton",
+  "Crystal Palace", "Leicester City", "Aston Villa", "Brentford",
+  "Leeds United", "Everton"
+};
 
-	for (int i = 0; i < 16; i++) {
+void tampilKlasemen(Klasemens Klasemen[]){
+  cout << "__________________________________________________________" << endl;
+  cout << "|    |                |    |    |    |    |    |    |    |" << endl;
+  cout << "| NO |    NAMA KLUB   | Ma | Me | Ka | Se | Me | Ke | Ni |" << endl;
+  cout << "|____|________________|____|____|____|____|____|____|____|" << endl;
+
+  for (int i = 0; i < 16; i++) {
     if ( i < 9 ) {
-	    cout << "| " << setiosflags(ios::left) << "0" << setw(2) << i + 1;
+      cout << "| " << setiosflags(ios::left) << "0" << setw(2) << i + 1;
     } else {
       cout << "| " << setiosflags(ios::left) << setw(3) << i + 1;
     }
 
-	  cout << "| " << setiosflags(ios::left) << setw(10) << Klasemen[i].nama_klub;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kalah;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].seri;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].memasukkan;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kemasukkan;
-	  cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].nilai;
-	  cout << "|"  << endl;
-	}
-	cout << "=====================================================" << endl;
+   cout << "| " << setiosflags(ios::left) << setw(15) << Klasemen[i].nama_klub;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].main;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].menang;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kalah;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].seri;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].memasukkan;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].kemasukkan;
+   cout << "| " << setiosflags(ios::left) << setw(3)  << Klasemen[i].nilai;
+   cout << "|"  << endl;
+ } 
+ cout << "==========================================================" << endl;
 }
 
 void initKlasemen(Klasemens Klasemen[]) {
   for ( int i = 0; i < 16; i++ ) {
-    Klasemen[i].nama_klub = 'A' + i;
+    Klasemen[i].nama_klub = nama_klub[i];
     Klasemen[i].main = 0;
     Klasemen[i].menang = 0;
     Klasemen[i].kalah = 0;
@@ -84,10 +91,10 @@ void urutBerdasarkanPointNilai(Klasemens Klasemen[]) {
 }
 
 void mulaiPertandingan(Klasemens Klasemen[]){
-	string nama_klub1, nama_klub2;
-	int gol_klub1, gol_klub2, index_klub1, index_klub2;
+  string nama_klub1, nama_klub2;
+  int gol_klub1, gol_klub2, index_klub1, index_klub2;
 	
-	cout << "Masukan Tim Pertama : ";
+  cout << "Masukan Tim Pertama : ";
   cin >> nama_klub1;
  
   cout << "Masukan Gol : ";
