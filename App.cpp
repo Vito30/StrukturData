@@ -125,6 +125,23 @@ void urutBerdasarkanPointMenang(Klasemens Klasemen[]) {
   tampilKlasemen(Klasemen);
 }
 
+void urutBerdasarkanPointKalah(Klasemens Klasemen[]) {
+  for (int i = 0; i < 16 - 1; ++i)
+  {
+    int pos = i;
+    for (int j = i + 1; j < 16; j++) {
+      if (Klasemen[j].kalah > Klasemen[pos].kalah) {
+        pos = j;
+      }
+    }
+    swapPointer(&Klasemen[pos], &Klasemen[i]);
+  }
+  cout << "Pemberitahuan: Data Berhasil di Urutkan berdasarkan Point Kalah!";
+  cout << endl;
+  cout << endl;
+  tampilKlasemen(Klasemen);
+}
+
 void mulaiPertandingan(Klasemens Klasemen[]){
   string nama_klub1, nama_klub2;
   int gol_klub1, gol_klub2, index_klub1, index_klub2;
@@ -194,6 +211,7 @@ void mainMenu() {
   cout << "[3] Urutkan Tabel Data Klasemen Berdasarkan Point Nilai" << endl;
   cout << "[4] Urutkan Tabel Data Klasemen Berdasarkan Point Main" << endl;
   cout << "[5] Urutkan Tabel Data Klasemen Berdasarkan Point Menang" << endl;
+  cout << "[6] Urutkan Tabel Data Klasemen Berdasarkan Point Kalah" << endl;
 }
 
 int main() {
@@ -229,6 +247,9 @@ int main() {
         break;
       case 5:
         urutBerdasarkanPointMenang(Klasemen);
+        break;
+      case 6:
+        urutBerdasarkanPointKalah(Klasemen);
         break;
     }
   }
